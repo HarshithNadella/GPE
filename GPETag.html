@@ -33,6 +33,16 @@
     deploymentId: '67ee55b8-90c7-49d5-aba1-319b3b26d199'
   });
   //Genesys("command", "Journey.record", { eventName: "timeOnPage6Secs"});
+    setTimeout(function () {
+    Genesys('subscribe', 'Messenger.ready', function () {
+      Genesys('command', 'Messenger.open', {}, function() {
+        console.log('Messenger opened');
+      }, function(error) {
+   console.log("Couldn't open messenger.", error);
+      })
+    });
+    console.log("Genesys custom event 'timeOnPage6Secs' recorded.");
+}, 15000);
 </script>
 <script>
   (function(a,t,c,l,o,u,d){a['_genesysJourneySdk']=o;a[o]=a[o]||function(){
