@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W2TCD776');</script>
-<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPE TEST Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) 
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2TCD776"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<!-- Genesys Cloud CX -->
+  <h1>GPE TEST</h1>
+  <p>Genesys</p>
+  <!-- Script goes at the end of body for best practice -->
 <script type="text/javascript" charset="utf-8">
-    (function (g, e, n, es, ys) {
-      g['_genesysJs'] = e;
-      g[e] = g[e] || function () {
-        (g[e].q = g[e].q || []).push(arguments);
-      };
-      g[e].t = 1 * new Date();
-      g[e].c = es;
-      ys = document.createElement('script'); ys.async = 1; ys.src = n; ys.charset = 'utf-8';
-      document.head.appendChild(ys);
-    })(window, 'Genesys', 'https://apps.euw2.pure.cloud/genesys-bootstrap/genesys.min.js', {
-      environment: 'prod-euw2',
-      deploymentId: '67ee55b8-90c7-49d5-aba1-319b3b26d199'
-    });
+  (function (g, e, n, es, ys) {
+    g['_genesysJs'] = e;
+    g[e] = g[e] || function () {
+      (g[e].q = g[e].q || []).push(arguments)
+    };
+    g[e].t = 1 * new Date();
+    g[e].c = es;
+    ys = document.createElement('script'); ys.async = 1; ys.src = n; ys.charset = 'utf-8'; document.head.appendChild(ys);
+  })(window, 'Genesys', 'https://apps.euw2.pure.cloud/genesys-bootstrap/genesys.min.js', {
+    environment: 'prod-euw2',
+    deploymentId: '67ee55b8-90c7-49d5-aba1-319b3b26d199'
+  });
+  //Genesys("command", "Journey.record", { eventName: "timeOnPage6Secs"});
+</script>
+<script>
+  (function(a,t,c,l,o,u,d){a['_genesysJourneySdk']=o;a[o]=a[o]||function(){
+  (a[o].q=a[o].q||[]).push(arguments)},a[o].l=1*new Date();u=t.createElement(c),
+  d=t.getElementsByTagName(c)[0];u.async=1;u.src=l;u.charset='utf-8';d.parentNode.insertBefore(u,d)
+  })(window, document, 'script', 'https://apps.euw2.pure.cloud/journey/sdk/js/web/v1/ac.js', 'ac');
+  ac('init', 'cacaff14-ca09-458d-8959-1c7ba504d261', { region: 'euw2' });
+  ac('pageview');
 </script>
 </body>
 </html>
