@@ -36,12 +36,12 @@
     setTimeout(function () {
     Genesys('subscribe', 'Messenger.ready', function () {
       Genesys('command', 'Messenger.open', {}, function() {
-        console.log('Messenger opened');
+        console.log('Messenger Launched after 15 seconds');
       }, function(error) {
    console.log("Couldn't open messenger.", error);
       })
     });
-    console.log("Genesys custom event 'timeOnPage6Secs' recorded.");
+    console.log("15 Seconds Threshold Achieved");
 }, 15000);
 </script>
 <script>
