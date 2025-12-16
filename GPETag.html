@@ -41,7 +41,10 @@
   })(window, document, 'script', 'https://apps.euw2.pure.cloud/journey/sdk/js/web/v1/ac.js', 'ac');
   ac('init', 'cacaff14-ca09-458d-8959-1c7ba504d261', { region: 'euw2' });
   ac('pageview');
-  ac('record', 'timeOnPage6Secs');
+  setTimeout(function() {
+        ac('record', 'timeOnPage6Secs');
+        console.log("Genesys custom event 'timeOnPage6Secs' recorded.");
+    , 6000); // 6000ms = 6 seconds
 </script>
 </body>
 </html>
