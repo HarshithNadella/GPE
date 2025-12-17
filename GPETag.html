@@ -35,7 +35,7 @@
   //Genesys("command", "Journey.record", { eventName: "timeOnPage6Secs"});
     setTimeout(function () {
     Genesys('subscribe', 'Messenger.ready', function () {
-      Genesys('command', 'Messenger.open', {}, function() {
+      Genesys('command', 'Messenger.close', {}, function() {
         console.log('Messenger Launched after 15 seconds');
       }, function(error) {
    console.log("Couldn't open messenger.", error);
