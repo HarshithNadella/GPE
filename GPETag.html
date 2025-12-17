@@ -35,20 +35,13 @@
   //Genesys("command", "Journey.record", { eventName: "timeOnPage6Secs"});
     setTimeout(function () {
     Genesys('subscribe', 'Messenger.ready', function () {
-      Genesys('command', 'Messenger.open', {}, function() {
+      Genesys('command', 'Messenger.close', {}, function() {
         console.log('Messenger Launched after 15 seconds');
-      Genesys("command", "Messenger.close",{},function() {
-        console.log("closing again");},
-        function() {
-        console.log("unable to close");});
-      }, function(error) {
-   console.log("Couldn't open messenger.", error);
-      })
     });
     console.log("15 Seconds Threshold Achieved");
 }, 15000);
 </script>
-<script>
+<!--<script>
   (function(a,t,c,l,o,u,d){a['_genesysJourneySdk']=o;a[o]=a[o]||function(){
   (a[o].q=a[o].q||[]).push(arguments)},a[o].l=1*new Date();u=t.createElement(c),
   d=t.getElementsByTagName(c)[0];u.async=1;u.src=l;u.charset='utf-8';d.parentNode.insertBefore(u,d)
@@ -59,6 +52,6 @@
     ac('record', 'timeOnPage6Secs');
     console.log("Genesys custom event 'timeOnPage6Secs' recorded.");
 }, 6000);
-</script>
+</script> -->
 </body>
 </html>
