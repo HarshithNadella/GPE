@@ -16,9 +16,8 @@
   </style>
 </head>
 <body>
-  <h1>GPE TEST</h1>
-  <p>Genesys</p>
-  <!-- Script goes at the end of body for best practice -->
+<h1>GPE TEST</h1>
+<p>Genesys Cloud Proactive Alert Test</p>
 <script type="text/javascript" charset="utf-8">
   (function (g, e, n, es, ys) {
     g['_genesysJs'] = e;
@@ -32,29 +31,22 @@
     environment: 'prod-euw2',
     deploymentId: '043f0c93-bef5-46cf-a546-5da0626098cd'
   });
-  //Genesys("command", "Journey.record", { eventName: "timeOnPage6Secs"});
-    setTimeout(function () {
-    Genesys('subscribe', 'Messenger.ready', function () {
-      Genesys('command', 'Messenger.open', {}, function() {
-        console.log('Messenger Launched after 30 seconds');
-      }, function(error) {
-   console.log("Couldn't open messenger.", error);
-      })
+Genesys('subscribe', 'Messenger.ready', function () {
+  // Delay opening by 30 seconds (30000 ms)
+  setTimeout(function() {
+    Genesys('command', 'Messenger.open', {}, function() {
+      console.log('Messenger opened after 30 seconds');
+      // Immediately close once opened
+      Genesys("command", "Messenger.close", {}, function() {
+        console.log("Messenger closed immediately");
+      }, function() {
+        console.log("Unable to close Messenger");
+      });
+    }, function(error) {
+      console.log("Couldn't open messenger.", error);
     });
-    console.log("30 Seconds Threshold Achieved");
-}, 30000);
+  }, 30000);
+});
 </script>
-<!--<script>
-  (function(a,t,c,l,o,u,d){a['_genesysJourneySdk']=o;a[o]=a[o]||function(){
-  (a[o].q=a[o].q||[]).push(arguments)},a[o].l=1*new Date();u=t.createElement(c),
-  d=t.getElementsByTagName(c)[0];u.async=1;u.src=l;u.charset='utf-8';d.parentNode.insertBefore(u,d)
-  })(window, document, 'script', 'https://apps.euw2.pure.cloud/journey/sdk/js/web/v1/ac.js', 'ac');
-  ac('init', 'cacaff14-ca09-458d-8959-1c7ba504d261', { region: 'euw2' });
-  ac('pageview');
-  setTimeout(function () {
-    ac('record', 'timeOnPage6Secs');
-    console.log("Genesys custom event 'timeOnPage6Secs' recorded.");
-}, 6000);
-</script> -->
 </body>
 </html>
