@@ -31,22 +31,21 @@
     environment: 'prod-euw2',
     deploymentId: '043f0c93-bef5-46cf-a546-5da0626098cd'
   });
-Genesys('subscribe', 'Messenger.ready', function () {
-  // Delay opening by 30 seconds (30000 ms)
   setTimeout(function() {
-    Genesys('command', 'Messenger.open', {}, function() {
-      console.log('Messenger opened after 30 seconds');
-      // Immediately close once opened
-      Genesys("command", "Messenger.close", {}, function() {
-        console.log("Messenger closed immediately");
-      }, function() {
-        console.log("Unable to close Messenger");
-      });
+    Genesys('subscribe', 'Messenger.ready', function () {
+      Genesys('command', 'Messenger.open', {}, function() {
+        console.log('Messenger opened after 30 seconds');
+        // Immediately close once opened
+        Genesys("command", "Messenger.close", {}, function() {
+          console.log("Messenger closed immediately");
+        }, function() {
+          console.log("Unable to close Messenger");
+        });
     }, function(error) {
       console.log("Couldn't open messenger.", error);
     });
+  });
   }, 30000);
-});
 </script>
 </body>
 </html>
