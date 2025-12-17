@@ -36,12 +36,6 @@ setTimeout(function() {
     Genesys('subscribe', 'Messenger.ready', function () {
       Genesys('command', 'Messenger.open', {}, function() {
         console.log('Messenger opened after 15 seconds');
-        // Immediately close once opened
-        Genesys("command", "Messenger.close", {}, function() {
-          console.log("Messenger closed immediately");
-        }, function() {
-          console.log("Unable to close Messenger");
-        });
     }, function(error) {
       console.log("Couldn't open messenger.", error);
     });
