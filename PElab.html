@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Genesys 30s Timer with Tracking</title>
+</head>
+<body>
+  <!-- Genesys Messenger Snippet -->
+  <script type="text/javascript" charset="utf-8">
+    (function (g, e, n, es, ys) {
+      g['_genesysJs'] = e;
+      g[e] = g[e] || function () { (g[e].q = g[e].q || []).push(arguments) };
+      g[e].t = 1 * new Date();
+      g[e].c = es;
+      ys = document.createElement('script'); ys.async = 1; ys.src = n; ys.charset = 'utf-8';
+      document.head.appendChild(ys);
+    })(window, 'Genesys', 'https://apps.mypurecloud.ie/genesys-bootstrap/genesys.min.js', {
+      environment: 'prod-euw1',
+      deploymentId: '80725917-4c20-447c-aa06-561a44409292'
+    });
+    // 30-second timer
+    (function() {
+      function fireEvent() {
+        Genesys("command", "Journey.record", {
+          eventName: "timerHasFired",
+          customAttributes: { timerName: "30_seconds" },
+          traitsMapper: []
+        });
+        console.log("timerHasFired sent!");
+      }
+      function waitForGenesys() {
+        if (window.Genesys) {
+          setTimeout(fireEvent, 30000); // wait 30 seconds
+        } else {
+          setTimeout(waitForGenesys, 500); // check again in 500ms
+        }
+      }
+      waitForGenesys();
+    })();
+  </script>
+  <!-- Genesys Tracking Snippet (Predictive Engagement) -->
+  <script>
+    (function(a,t,c,l,o,u,d){
+      a['_genesysJourneySdk']=o;
+      a[o]=a[o]||function(){(a[o].q=a[o].q||[]).push(arguments)};
+      a[o].l=1*new Date();
+      u=t.createElement(c); d=t.getElementsByTagName(c)[0];
+      u.async=1; u.src=l; u.charset='utf-8';
+      d.parentNode.insertBefore(u,d)
+    })(window, document, 'script', 'https://apps.mypurecloud.ie/journey/sdk/js/web/v1/ac.js', 'ac');
+    ac('init', '773b0fee-6e0d-4de1-8500-d798e2eb4a57', { region: 'euw1' });
+    ac('pageview');
+  </script>
+
+</body>
+</html>
