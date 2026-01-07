@@ -17,6 +17,29 @@
     environment: 'prod-euw1',
     deploymentId: '80725917-4c20-447c-aa06-561a44409292'
   });
+<script>
+(function wait30Seconds() {
+  // Ensure Genesys is loaded before firing
+  function fireEvent() {
+    Genesys("command", "Journey.record", {
+      eventName: "timerHasFired",
+      customAttributes: {
+        timerName: "30_seconds"
+      },
+      traitsMapper: []
+    });
+  }
+  function waitForGenesys() {
+    if (window.Genesys) {
+      setTimeout(fireEvent, 30000); // 30 seconds
+    } else {
+      // Check again in 500ms if Genesys isn't loaded yet
+      setTimeout(waitForGenesys, 500);
+    }
+  }
+  waitForGenesys();
+})();
+</script>
 </script>
 <script>
   (function(a,t,c,l,o,u,d){a['_genesysJourneySdk']=o;a[o]=a[o]||function(){
